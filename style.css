@@ -1,0 +1,464 @@
+body, html{
+  height: 100%;
+  margin: 0;
+  overflow: auto;
+}
+
+/* Code related to scrollbar used from https://css-tricks.com/the-current-state-of-styling-scrollbars/  */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar {
+    width: 6px;
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #000000;
+}
+
+
+/* ------------------------------HEADER----- */
+.header {
+  display: inline-block;
+  margin: 0 auto;
+  font-size: 1.2em;
+  text-align: center;
+  width: 100%;
+  background-color: #2D4E31F0;
+  font-family: 'Cinzel', sans-serif;
+  word-spacing: 15px;
+  color: #EBEBEB;
+}
+
+.header img {
+  float: left;
+  margin-left: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .header {
+    font-size: 0.9em;
+  }
+
+  .header img {
+    transform: scale(0.7);
+  }
+}
+
+/* ------------------------------MENU----- */
+nav {
+  position: sticky;
+  top: 0;
+  background-color: #2D4E31F0;
+  z-index: 500;
+
+}
+
+.menu-bar {
+  display: inline-block;
+  margin: 0 auto;
+  /* border: solid black 1px; */
+  width: 100%;
+  text-align: center;
+  border-bottom: solid grey 2px;
+}
+
+.menu-bar a {
+  display: inline-block;
+  list-style-type: none;
+  padding: 10px 20px;
+  border: solid #EBEBEB 1px;
+  border-radius: 8px;
+  background-color: #EBEBEB;
+  margin: 5px 5px;
+  font-family: 'Cinzel', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#burg {
+  display: none;
+}
+
+.menu-bar a:hover {
+  background-color: #b3b3b3;
+  color: red;
+  transform: scale(1.05, 1.05);
+}
+
+.menu-bar {
+  display: inline-block;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .menu-bar a:not(:first-child) {
+    display: none;
+  }
+
+  .menu-bar a:first-child {
+    float: left;
+  }
+
+  #burg {
+    display: block;
+    float: right;
+  }
+
+}
+
+
+/* ------------------------------MAIN----- */
+/* -------------------------Home----- */
+.container {
+  width: 100vw;
+  margin: 0 auto;
+  background: #f9f9f9;
+  font-size: 24px;
+}
+
+.parallax {
+  background: url('media/A2/anzac-poppy.jpg') no-repeat center;
+  /* image sourced from https://unsplash.com/photos/zVH_KLQWWM8 */
+  background-size: cover;
+  background-attachment: fixed;
+  height: 70vh;
+}
+
+.intro {
+  padding: 55px;
+  margin: auto;
+  height: 100%;
+  background: url('media/A2/anzac-salute.jpg') no-repeat center;
+  /* image sourced from https://unsplash.com/photos/e6nbmkrNw7E */
+  background-size: cover;
+  background-attachment: fixed;
+  border-top: grey solid 10px;
+  border-bottom: grey solid 10px;
+}
+
+.text-box {
+  width: 50vw;
+  margin: 0 auto;
+  padding: 55px 10%;
+  background-color: #fff4dce0;
+  border-radius: 30px;
+  box-shadow: 0px 0px 4px rgba(34,34,34,0.6);
+}
+
+.text-box p {
+  font-family: 'Share', cursive;
+  color: black;
+  text-align: justify;
+  font-size: 1.2em;
+}
+
+@media only screen and (max-width: 600px) {
+  div.intro {
+    padding: 15px;
+    border: none;
+  }
+
+  div.text-box {
+    margin: 0;
+    width: auto;
+  }
+
+  .parallax {
+    display: none;
+  }
+}
+
+/* -------------------------Letters/Battles----- */
+.letters-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: max-content /*minmax(40vh, max-content)*/;
+  background-color: #2D4E31F0;
+  justify-items: center;
+  gap: 20px;
+  padding: 20px;
+  perspective: 6000px;
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+.letters-container > p {
+  font-family: 'Share', cursive;
+  font-size: 1.7em;
+  margin: 50px;
+  grid-column: 1/3;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  min-height: 300px;
+  transform-style: preserve-3d;
+  transition: 1.5s;
+}
+
+.card.flip {
+  transform: rotateY(180deg);
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background-size: cover;
+}
+
+.card p {
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 1.9em;
+  padding: 30px;
+}
+
+.frontLetter {
+  /* http://www.nzstamps.org.uk/air/air34/newguinea.html */
+  background: url('media/A2/airmail.jpg');
+  background-size: cover;
+  transform: rotateY(360deg);
+}
+
+.backLetter {
+  transform: rotateY(180deg);
+  /*https://unsplash.com/photos/yorwIcw6IR0*/
+  background: url('media/A2/paper.jpg');
+  overflow-y: scroll;
+}
+
+.frontPostCard {
+  /* https://cdn.shopify.com/s/files/1/1021/8371/products/XHA3_127_2310e8dd-b48b-44f4-86d9-8f58c7949d58_2048x2048.jpg?v=1571709016 */
+  background: url('media/A2/pcImage2.jpg');
+  transform: rotateY(360deg);
+  background-size: cover;
+}
+
+.backPostCard {
+  transform: rotateY(180deg);
+  /* https://cdn.pixabay.com/photo/2017/08/11/10/22/backside-of-a-vintage-postcard-2630276_960_720.jpg */
+  background: url('media/A2/postcard.jpg');
+  overflow-y: scroll;
+}
+
+.backPostCard p {
+  width: 48%;
+}
+
+.sidebar {
+  background-color: #2D4E31F0;
+  padding-top: 100px;
+}
+
+.battles-pane, .terms-pane {
+  background-color: #2D4E31F0;
+}
+
+.years-pane p, .battles-pane p {
+  font-family: 'Share', cursive;
+  font-size: 1.7em;
+  margin: 50px;
+}
+
+.year {
+  margin: 5px auto;
+  padding-left: 50px;
+  padding-right: 50px;
+  display: none;
+}
+
+.year p, .battles-pane p {
+  font-family: 'Cinzel', cursive;
+  font-size: 2em;
+  text-shadow: 2px 2px 2px #ffffff99;
+}
+
+.year a, .battles-pane a {
+  display: block;
+  font-family: 'Cinzel', cursive;
+  font-size: 1.5em;
+  color: #EBEBEB;
+  background-color: #ffffff22;
+  margin: 1px;
+  border-radius: 2px;
+  padding: 1px;
+}
+
+.letter-style {
+  display: none;
+  background: url('media/A2/paper2.jpg') center;
+  /* background-size: cover; */
+  border-radius: 5px;
+}
+
+.letter-style p {
+  padding: 50px;
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 2.2em;
+  /* text-shadow: 1px 1px 1px #fff; */
+}
+
+.sidebar button {
+  display: block;
+  width: 100%;
+  height: 100px;
+  background-color: #2D4E31F0;
+  font-family: 'Cinzel', cursive;
+  color: #EBEBEB;
+  font-size: 1.7em;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .letters-container {
+    grid-template-columns: auto;
+    grid-template-rows: 32px auto;
+    padding: 20px;
+  }
+
+  .letters-container p {
+    grid-column: 1/2;
+    grid-row: 1/3;
+  }
+
+  .letter-style p {
+    padding: 0;
+    margin: 20px 15px;
+  }
+
+}
+
+/* -------------------------Battles----- */
+.battles-container {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  min-height: 100vh;
+}
+
+.battles-pane {
+  padding: 0 50px;
+}
+
+/* -------------------------Places----- */
+.places-container {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  min-height: 100vh;
+}
+
+#map {
+  width: 100%;
+  height: 100vh;
+}
+
+/* -------------------------Terms----- */
+.terms-container {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  min-height: 100vh;
+}
+
+.terms-pane table {
+  border-collapse: collapse;
+}
+
+.terms-pane table, th, td {
+  border: 1px solid black;
+  padding: 5px;
+  background-color: #A5D5AB99;
+  font-family: 'Cinzel', cursive;
+  font-weight: bold;
+}
+
+.terms-pane th {
+  height: 2em;
+  font-size: 1.1em;
+}
+
+@media only screen and (max-width: 800px) {
+  .battles-container, .places-container, .terms-container {
+    grid-template-columns: 0fr 1fr;
+  }
+
+  .battles-pane, .year {
+    padding: 0 25px;
+  }
+
+}
+
+/* ------------------------------Contact----- */
+.contact-container {
+  background-color: #2D4E31F0;
+  min-height: 70vh;
+  padding-top: 5%;
+}
+
+.contact-form-box {
+  border: solid black 2px;
+  border-radius: 5px;
+  margin: 0 auto;
+  width: fit-content;
+  width: -moz-fit-content;
+  padding: 40px 20px;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 5px;
+}
+
+.contact-form label {
+  grid-column: 1 / 2;
+  text-align: right;
+  padding-right: 5px;
+  font-family: 'Cinzel', cursive;
+  color: #EBEBEB;
+}
+
+.contact-form input,
+.contact-form button {
+  grid-column: 2 / 3;
+}
+
+.contact-container p {
+  font-family: 'Cinzel', cursive;
+  color: #EBEBEB;
+  text-align: center;
+}
+
+.form-error {
+  font-family: 'Share', cursive;
+  text-align: center;
+  color: red;
+  border: black thin solid;
+  background-color: #EBEBEB;
+  font-weight: 700;
+  display: block;
+  grid-column: 1/3;
+}
+
+
+
+/* ------------------------------FOOTER----- */
+
+.footer {
+  padding: 15px;
+  text-align: center;
+  background-color: #2D4E31F0;
+  font-family: 'Share', sans-serif;
+  color: #EBEBEB;
+  border-top: solid grey 2px;
+}
